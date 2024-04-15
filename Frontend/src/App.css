@@ -1,0 +1,12 @@
+body {
+    background-color: #f1f5f9;
+}
+
+#hero, #about, #footer {
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+
+.alert{
+    background-color: red;
+}
