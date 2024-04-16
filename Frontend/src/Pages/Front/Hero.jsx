@@ -49,10 +49,13 @@ const Hero = () => {
           <img src="images/books.png" alt="books" />
         </div>
       </div>
+      <div id="courses">
       <Courses/>
-      <Teachers />
-      <About />
-      <Footer />
+      </div>
+      <div id="teachers"><Teachers /></div>
+      
+      <div id="about"><About /></div>
+   <Footer />
     </section>
   );
 };

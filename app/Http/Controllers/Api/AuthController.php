@@ -14,7 +14,7 @@ class AuthController extends Controller
     public function Signup(SignupRequest $request)
     {
         $data = $request->validated();
-        /** @var User $user */
+        /** @var \App\Models\User  $user */
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -28,11 +28,11 @@ class AuthController extends Controller
     // LOgin
     public function login(LoginRequest $request) 
     {
-        $credentails = $request ->validated();
+        $credentails = $request->validated();
         if(!Auth::attempt($credentails)){
             return response([
                 'message'=>'provided email or password is incorrect'
-            ]);
+            ],422);
         }
         /** @var User $user */
         $user = Auth::user();
