@@ -11,7 +11,7 @@ import Hero from "./Pages/Front/Hero";
 import GuestLayout from "./Layouts/GuestLayout.jsx";
 import AdminLayout from "./Layouts/AdminLayout";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-
+import Students from "./components/Students";
 import Users from "./Pages/Dashboard/Users";
 import { ContextProvider } from "./Contexts/ContextProvider";
 
@@ -33,7 +33,10 @@ const router = createBrowserRouter([
             path:'/users',
             element:<Users/ >
           },
-        
+          {
+            path:'/student',
+            element:<Students/ >
+          },
           
          
       ]

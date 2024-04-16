@@ -49,8 +49,9 @@ const Hero = () => {
           <img src="images/books.png" alt="books" />
         </div>
       </div>
-      <div id="courses">
+      <div id="courses ">
       <Courses/>
+      <hr className="border-1"></hr>
       </div>
       <div id="teachers"><Teachers /></div>
       

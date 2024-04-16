@@ -4,13 +4,12 @@ import Sidebar from "../components/Sidebar";
 import { useStateContext } from "../Contexts/ContextProvider";
 import axiosClient from "../axios-client";
 
-import { useEffect } from "react";
 
 
 export default function AdminLayout(){
 
     const {user, token,setUser,setToken, notification} = useStateContext();
-
+    
     if(!token){
         return <Navigate to="/login"/>
     }
@@ -23,12 +22,12 @@ export default function AdminLayout(){
             setToken(null)
           })
       }
-   useEffect( ()=>  {
-    axiosClient.get('/user')
-    .then(({data}) => {
-    setUser(data)
-    })
-    }, [])
+//    useEffect( ()=>  {
+//     axiosClient.get('/user')
+//     .then(({data}) => {
+//     setUser(data)
+//     })
+//     }, [])
 
     
 
@@ -39,7 +38,7 @@ export default function AdminLayout(){
             <div className="w-full">
             <div>
             <nav className="h-14 bg-gray-200 w-full p-3 px-6 flex justify-between">
-                Dashboard
+            Dashboard
                 <div>
                 {user.name}
                 <a href="#" onClick={onLogout} className="p-2">Logout</a>

@@ -13,7 +13,7 @@ notification: null,
 // eslint-disable-next-line react/prop-types
 export const ContextProvider = ({children}) => {
     const [user, setUser] = useState({
-      name:'Ahmad'
+     name:'ahmad'
     });
     const[token,_setToken]= useState(123);
     const [notification, _setNotification] = useState();
