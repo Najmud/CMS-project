@@ -12,18 +12,16 @@ notification: null,
 
 // eslint-disable-next-line react/prop-types
 export const ContextProvider = ({children}) => {
-    const [user, setUser] = useState({
-     name:'ahmad'
-    });
-    const[token,_setToken]= useState(123);
-    const [notification, _setNotification] = useState();
+    const [user, setUser] = useState({});
+    const[token, _setToken]= useState(localStorage.getItem('ACCESS_TOKEN'));
+    const [notification,  _setNotification] = useState();
 
     const setToken = (token)=>{
     _setToken(token)
     if (token){
         localStorage.setItem('ACCESS_TOKEN',token)
-    }else{
-        localStorage.removeItem('ACCESS_TOKEN')
+     }else{
+         localStorage.removeItem('ACCESS_TOKEN')
     }
     }
     const setNotification = message => {

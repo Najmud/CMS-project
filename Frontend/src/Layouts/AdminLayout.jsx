@@ -3,16 +3,18 @@ import Sidebar from "../components/Sidebar";
 
 import { useStateContext } from "../Contexts/ContextProvider";
 import axiosClient from "../axios-client";
+import {useEffect} from "react";
 
 
 
 export default function AdminLayout(){
 
-    const {user, token,setUser,setToken, notification} = useStateContext();
+    const {user, token, setUser ,setToken, notification} = useStateContext();
     
     if(!token){
         return <Navigate to="/login"/>
     }
+
     const onLogout = ev => {
         ev.preventDefault()
     
@@ -22,17 +24,24 @@ export default function AdminLayout(){
             setToken(null)
           })
       }
-//    useEffect( ()=>  {
-//     axiosClient.get('/user')
-//     .then(({data}) => {
-//     setUser(data)
-//     })
-//     }, [])
+      
+
+    
+   // eslint-disable-next-line react-hooks/rules-of-hooks
+   useEffect( () =>  {
+     axiosClient.get('/user')
+      .then(({data}) => {
+        setUser(data)
+        console.log(data)
+    })
+    },[setUser]) 
+
+    
 
     
 
     return( 
-        <div className="flex">
+        <div id="AdminLayout" className="flex">
             <Sidebar/>
 
             <div className="w-full">
@@ -40,8 +49,8 @@ export default function AdminLayout(){
             <nav className="h-14 bg-gray-200 w-full p-3 px-6 flex justify-between">
             Dashboard
                 <div>
-                {user.name}
-                <a href="#" onClick={onLogout} className="p-2">Logout</a>
+               {user.name}
+               <button onClick={onLogout} className="p-2">Logout</button>
                 </div>
             </nav>
         </div>
@@ -52,7 +61,8 @@ export default function AdminLayout(){
                     <div className="notification">
                       {notification}
                     </div>
-                  }
+                }
+                  
             </div>
         </div>
     )

@@ -34,18 +34,18 @@ const Signup = () => {
     }
   console.log(payload)
 
+  
   axiosClient.post('/signup', payload)
   .then(({data}) =>{
     setUser(data.user)
     setToken(data.token )
+    console.log(data)
     })
   .catch(err =>{
     const response = err.response;
     if (response && response.status === 422){
-      setErrors(response.data.errors)
-    }
-
-    
+       setErrors(response.data.errors)
+    }  
   })
  
 

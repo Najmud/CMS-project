@@ -13,7 +13,7 @@ class AuthController extends Controller
 {
     public function Signup(SignupRequest $request)
     {
-        $data = $request->validated();
+        $data = $request;
         /** @var \App\Models\User  $user */
         $user = User::create([
             'name' => $data['name'],
@@ -43,7 +43,7 @@ class AuthController extends Controller
     public function logout(Request $request){
         /** @var User $user */
         $user = $request->user();
-        $user -> currentAccessToken();
+        $user -> currentAccessToken()->delete();
         return response('',204);
     }
 }

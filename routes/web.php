@@ -25,7 +25,7 @@ Route::get('/',function(){
 }
 );
 
-Route::get('/signup',[AuthController::class, 'Signup']);
+Route::get('/users/2',[UserController::class,'store']);
 
 //     return Inertia::render('Welcome', [
 //         'canLogin' => Route::has('login'),
