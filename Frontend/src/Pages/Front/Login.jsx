@@ -12,14 +12,15 @@ export default function Login ()  {
   const passwordRef = useRef()
   const {setToken} = useStateContext()
   const {setUser} = useStateContext()
+  const [errors, setErrors] = useState(null)
 
-  const[errors, setErrors]= useState(null);
   const onSubmit=(ev)=>{
     ev.preventDefault()
     const payload ={
       email: emailRef.current.value,
       password: passwordRef.current.value,
     }
+    setErrors(null)
    console.log(payload)
   axiosClient.post('/login',payload)
   .then(({data}) =>{
@@ -28,8 +29,14 @@ export default function Login ()  {
   })
   .catch(err =>{
     const response = err.response;
-    if (response && response.status === 422){
-      setErrors(response.data.errors)
+    if (response && response.status === 422) {
+      if (response.data.errors){
+        setErrors(response.data.errors)
+      }else{
+        setErrors({
+          email:[response.data.message]
+        })
+      }
     }
   })
  
@@ -45,12 +52,16 @@ export default function Login ()  {
       
             <h1 className="block text-gray-700 text-lg font-bold mb-6">Log Into Your Account</h1>
          
-                      { errors && <div className="p-2 bg-red-200 text-sm rounded-xl text-red-900">
-                      {Object.keys(errors).map(key=>(
-                        <p key={key}>{errors[key][0]}</p>
-                      ))}
-                      </div>
-                      }
+                      
+            { errors && <div className="p-2 bg-red-200 text-sm rounded-xl text-red-900">
+            {Object.keys(errors).map(key=>(
+              <p key={key}>{errors[key][0]}</p>
+            ))
+          }
+          </div>
+        }
+
+
 
           <div className="mb-4">
 

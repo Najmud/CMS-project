@@ -14,7 +14,7 @@ const Hero = () => {
             </p>
             <p className="text-gray-900 font-bold mt-2 dark:text-slate-100">
               Build Your Future With New Learnings methods of Ganj Educational Center.
-              we provide you the bestest international education resourses. Join as to grow strongle then past.
+              we provide you the bestest international education resourses. Join us to grow strongly.
             </p>
           </div>
           <div className="flex mt-4 ml-0">
@@ -49,10 +49,14 @@ const Hero = () => {
           <img src="images/books.png" alt="books" />
         </div>
       </div>
+      <div id="courses ">
       <Courses/>
-      <Teachers />
-      <About />
-      <Footer />
+      <hr className="border-1"></hr>
+      </div>
+      <div id="teachers"><Teachers /></div>
+      
+      <div id="about"><About /></div>
+   <Footer />
     </section>
   );
 };

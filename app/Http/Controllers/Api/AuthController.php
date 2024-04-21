@@ -13,8 +13,8 @@ class AuthController extends Controller
 {
     public function Signup(SignupRequest $request)
     {
-        $data = $request->validated();
-        /** @var User $user */
+        $data = $request;
+        /** @var \App\Models\User  $user */
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -28,11 +28,11 @@ class AuthController extends Controller
     // LOgin
     public function login(LoginRequest $request) 
     {
-        $credentails = $request ->validated();
+        $credentails = $request->validated();
         if(!Auth::attempt($credentails)){
             return response([
                 'message'=>'provided email or password is incorrect'
-            ]);
+            ],422);
         }
         /** @var User $user */
         $user = Auth::user();
@@ -43,7 +43,7 @@ class AuthController extends Controller
     public function logout(Request $request){
         /** @var User $user */
         $user = $request->user();
-        $user -> currentAccessToken();
+        $user -> currentAccessToken()->delete();
         return response('',204);
     }
 }

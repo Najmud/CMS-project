@@ -11,9 +11,10 @@ import Hero from "./Pages/Front/Hero";
 import GuestLayout from "./Layouts/GuestLayout.jsx";
 import AdminLayout from "./Layouts/AdminLayout";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-
+import Students from "./components/Students";
 import Users from "./Pages/Dashboard/Users";
 import { ContextProvider } from "./Contexts/ContextProvider";
+import UserForm from "./Pages/Dashboard/UserForm";
 
 
 const router = createBrowserRouter([
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
       children:[
           {
             path:'/',
-            element:<Navigate to="/users"/ >
+            element:<Navigate to="/dashboard"/ >
           },
           {
               path:'/dashboard',
@@ -33,7 +34,18 @@ const router = createBrowserRouter([
             path:'/users',
             element:<Users/ >
           },
-        
+          {
+            path:'/student',
+            element:<Students/ >
+          },
+          {
+            path:'/users/new',
+            element:<UserForm key="userCreate"/ >
+          },
+          {
+            path:'/users/:id',
+            element:<UserForm key="userUpdate"/ >
+          },
           
          
       ]
@@ -71,13 +83,15 @@ const router = createBrowserRouter([
       element: <ErrorPage/>
   }
 
+  
 ])
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
   <ContextProvider>
-    <RouterProvider router={router} />
+   
+  <RouterProvider router={router} />
   </ContextProvider>
   </React.StrictMode>
 );

@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Support\Facades\Password;
 use Illuminate\Foundation\Http\FormRequest;
 
-class SignupRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +22,9 @@ class SignupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required|string|max:25 ',
-            'email'=>'required|email ',
-            'password'=>'required|confirmed|min:6 ',
-               
+            'name' =>'required|string|max:35',
+            'email' =>'required|email|unique:users,email'.$this->id,
+            'password' => 'confirmed|min:6 '
         ];
     }
 }

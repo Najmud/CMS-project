@@ -20,10 +20,12 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/',[UserController::class,'index']
+Route::get('/',function(){
+    return view('welcome');
+}
 );
 
-Route::get('/',[AuthController::class, 'Signup']);
+Route::get('/users/2',[UserController::class,'store']);
 
 //     return Inertia::render('Welcome', [
 //         'canLogin' => Route::has('login'),

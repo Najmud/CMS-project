@@ -8,7 +8,7 @@ const navigation = [
   { name: "Home", href: "/home", current: false },
   { name: "Courses", href: "#", current: false },
   { name: "Teachers", href: "#", current: false },
-  { name: "About Us", href: "/about", current: false },
+  { name: "About Us", href: "#", current: false },
 ];
 
 function classNames(...classes) {
@@ -48,32 +48,32 @@ const Header = () => {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-buttonColor text-navbarTextColor hover:text-gray-800"
-                            : "text-navbarTextColor hover:bg-buttonColor hover:text-gray-800",
-                          "rounded-md px-3 py-2 text-sm font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </a>
-                      // <Link
-                      //   to={item.href}
+                      // <a
                       //   key={item.name}
+                      //   href={item.href}
                       //   className={classNames(
                       //     item.current
-                      //       ? "bg-buttonColor text-navbarTextColor hover:text-gray-800 dark:text-slate-100"
-                      //       : "text-navbarTextColor hover:bg-buttonColor hover:text-gray-800 dark:text-slate-100",
+                      //       ? "bg-buttonColor text-navbarTextColor hover:text-gray-800"
+                      //       : "text-navbarTextColor hover:bg-buttonColor hover:text-gray-800",
                       //     "rounded-md px-3 py-2 text-sm font-medium"
                       //   )}
                       //   aria-current={item.current ? "page" : undefined}
                       // >
                       //   {item.name}
-                      // </Link>
+                      // </a>
+                      <Link
+                        to={ item.href}
+                        key={item.name}
+                        className={classNames(
+                          item.current
+                            ? "bg-buttonColor text-navbarTextColor hover:text-gray-800 dark:text-slate-100"
+                            : "text-navbarTextColor hover:bg-buttonColor hover:text-gray-800 dark:text-slate-100",
+                          "rounded-md px-3 py-2 text-sm font-medium"
+                        )}
+                        aria-current={item.current ? "page" : undefined}
+                      >
+                        {item.name}
+                      </Link>
                     ))}
                   </div>
                 </div>
